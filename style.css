@@ -1,48 +1,62 @@
-body {
-    background-color: #BDD4DE;
-    margin: 0;
-    font-family: Helvetica;
+body
+{
+	background-color: #BDD4DE;
+	margin: 0;
+	font-family: Helvetica;
 }
 
 .wrap
 {
-    margin-left: 270px;
-    padding-top: 100px;
+	margin-left: 270px;
+	padding-top: 100px;
 }
 
 .orange
 {
-    color: #FF530D;
+	color: #FF530D;
 }
 
 .body-color
 {
-    color: #BDD4DE;
+	color: #BDD4DE;
 }
 
+.blue1
+{
+	color: #2B3A42;
+}
 
-html {
-    background: #111111;
-    height: 100%;
-    background: linear-gradient( #333, #000);
+canvas
+{
+	display: none;
 }
-canvas {
-    display: none;
+
+.fdp
+{
+	position: absolute;
+	z-index: 1;
 }
-video, #startbutton {
-    display: block;
-    float: left;
+
+video
+{
+	display: block;
+	float: left;
+	position: relative;
+	/*z-index: -0;*/
+	/* flips video (mirror effect) */
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
 }
 #startbutton {
-    background: green;
-    border: none;
-    color: #fff;
-    margin: 100px 20px 20px 20px;
-    padding: 10px 20px;
-    font-size: 20px;
+	background: #FF530D;
+	border: none;
+	color: #2B3A42;
+	margin: 100px 20px 20px 20px;
+	padding: 10px 20px;
+	font-size: 20px;
 }
 #container {
-    overflow: hidden;
-    width: 880px;
-    margin: 20px auto;
+	overflow: hidden;
+	width: 880px;
+	margin: 20px auto;
 }

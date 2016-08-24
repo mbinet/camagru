@@ -4,9 +4,9 @@ include('functions.php');
 include(getenv('DOCUMENT_ROOT') . '/config/db.php');
 
 $servername = "localhost";
-$username = "mbinet";
-$password = "";
-$db_name = "c9";
+$username = "root";
+$password = "bonjour";
+$db_name = "camagru";
 $conn = mysqli_connect($servername, $username, $password, $db_name);
 session_start();
 // Check connection

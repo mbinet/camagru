@@ -68,8 +68,14 @@ a
 			<img src="<?php echo getenv('root') ?>/img/favicon/favicon-96x96.png" style="vertical-align: middle" width="50"></img>
 			Camagru
 		</a>
-		<div class="logout">
-			<a href="/resources/logout.php">logout</a>
-		</div>
+		<?php
+		if ($_SESSION[id]) {
+			?>
+			<div class="logout">
+				<a href="/resources/logout.php">logout</a>
+			</div>
+			<?php
+		}
+		?>
 	</div>
 </div>

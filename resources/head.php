@@ -8,6 +8,7 @@ $username = "mbinet";
 $password = "";
 $db_name = "c9";
 $conn = mysqli_connect($servername, $username, $password, $db_name);
+session_start();
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -15,6 +16,13 @@ if (!$conn) {
 
 
 $root = getenv('DOCUMENT_ROOT');
+
+$file = basename($_SERVER['PHP_SELF']);
+
+if (!$_SESSION['login'] && $file != "galery.php" && $file != "login.php")
+{
+	header('Location: /pages/login.php');
+}
 
 ?>
 <html>

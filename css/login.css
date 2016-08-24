@@ -1,13 +1,13 @@
-.login
+.login_wrap
 {
 	height: 400px;
 	width: 400px;
 	background-color: white;
-	backdrop-filter: blur(10px);
-	z-index: 999;
-	/*position: absolute;*/
-	margin-left: auto;
-	margin-right: auto;
-	vertical-align: middle;
 	padding: 20px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
 }

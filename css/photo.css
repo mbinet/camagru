@@ -1,0 +1,17 @@
+.sidebar {
+    width: 300px;
+    display: inline-block;
+}
+
+.comments{
+    height: 200px;
+    border: 1px solid red;
+    overflow: scroll;
+}
+
+.input_comment{
+    background-color: inherit;
+    border: none;
+    font-size: 0.7vw;
+    height: 2vw;
+}

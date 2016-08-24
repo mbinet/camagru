@@ -2,18 +2,31 @@
 include("../resources/head.php");
 
 $raw = (isset($_POST["raw"])) ? $_POST["raw"] : NULL;
+$filter_txt = (isset($_POST["filter"])) ? $_POST["filter"] : NULL;
 
 if ($raw)
 {
 	save_first_photo($raw);
-	$filter = '../img/filters/windows.png';
+// 	$filter = '../img/filters/windows.png';
+	$filter = get_filter($filter_txt);
+	echo $filter;
 	$new_image = merge_images("../img/photos/first_photo.png", $filter);
 	save_final_image($new_image, $pdo);
 	echo "OK";
+	echo $filter;
 }
 else
 {
 	echo "FAIL";
+}
+
+function get_filter($fil) {
+    if ($fil == "swag") {
+        return ("../img/filters/boner.gif");
+    }
+    else {
+        return ("../img/filters/" . $fil . ".png");
+    }
 }
 
 function save_first_photo($raw) {
@@ -26,13 +39,13 @@ function save_first_photo($raw) {
 
 
 function merge_images($img1_url, $img2_url) {
-    if (($img1 = imagecreatefrompng("$img1_url")) == FALSE)
-    {
-        echo 'Error while opening first picture';
+    $img1 = imagecreatefrompng("$img1_url");
+    // echo pathinfo($img2_url ,PATHINFO_EXTENSION) . "PUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTE";
+    if (pathinfo($img2_url ,PATHINFO_EXTENSION) == "png") {
+        $img2 = imagecreatefrompng("$img2_url");
     }
-    if (($img2 = imagecreatefrompng("$img2_url")) == FALSE)
-    {
-        echo 'Error while opening second picture';
+    else if (pathinfo($img2_url ,PATHINFO_EXTENSION) == "gif") {
+        $img2 = imagecreatefromgif("$img2_url");
     }
     $img1_x = imagesx($img2); 
     $img1_y = imagesy($img2);
@@ -69,7 +82,8 @@ function generate_file_name($pdo) {
 }
 
 function final_image_to_db($url, $pdo) {
-    $query = $pdo->prepare("UPDATE `photos` SET `url` = '" . $url . "', `id_user` = 3 WHERE `url` = 'in progress'");
+    echo $_SESSION['id'];
+    $query = $pdo->prepare("UPDATE `photos` SET `url` = '" . $url . "', `id_user` = " . $_SESSION['id'] . " WHERE `url` = 'in progress'");
     $query->execute();
 }
 

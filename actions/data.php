@@ -40,7 +40,6 @@ function save_first_photo($raw) {
 
 function merge_images($img1_url, $img2_url) {
     $img1 = imagecreatefrompng("$img1_url");
-    // echo pathinfo($img2_url ,PATHINFO_EXTENSION) . "PUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTEPUTE";
     if (pathinfo($img2_url ,PATHINFO_EXTENSION) == "png") {
         $img2 = imagecreatefrompng("$img2_url");
     }
@@ -62,6 +61,14 @@ function save_final_image($image_object, $pdo) {
 	{
 		echo 'Error while saving Alpha channel.';
 	}
+	pr($filename);
+	
+	header( "Content-type: image/png" );
+    imagepng($my_img);
+    $save = "../sigs/". strtolower($name) .".png";
+    chmod($save,0755);
+    imagepng($my_img, $save, 0, NULL);
+    
 	if (imagepng($image_object, '../img/photos/'.$filename.'.png') != TRUE)
 	{
 		echo 'Error while saving new image.';

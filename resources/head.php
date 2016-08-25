@@ -19,7 +19,7 @@ $root = getenv('DOCUMENT_ROOT');
 
 $file = basename($_SERVER['PHP_SELF']);
 
-if (!$_SESSION['login'] && $file != "galery.php" && $file != "login.php")
+if (!$_SESSION['login'] && $file != "galery.php" && $file != "login.php" && $file != "register.php")
 {
 	header('Location: /pages/login.php');
 }

@@ -69,7 +69,7 @@ a
 			Camagru
 		</a>
 		<?php
-		if ($_SESSION[id]) {
+		if ($_SESSION[id]) {	
 			?>
 			<div class="logout">
 				<a href="/resources/logout.php">logout</a>

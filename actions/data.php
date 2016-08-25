@@ -64,7 +64,7 @@ function save_final_image($image_object, $pdo) {
 	pr("<br/><br/><br/>" . $filename);
 	
     $save = "../img/photos/". $filename .".png";
-    chmod("../img/photos/", 0755);
+    chmod("../img/photos/", 0777);
     // imagepng($my_img, $save, 0, NULL);
     
 // 	if (imagepng($image_object, '../img/photos/'.$filename.'.png') != TRUE)

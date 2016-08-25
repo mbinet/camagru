@@ -23,6 +23,7 @@ if (!isset($_POST['name']))
 			?>
 			<form action="register.php" method="post" >
 				<input type="text" name="name" placeholder="Name" value="<?php echo $_GET['name'] ?>" required autofocus/>
+				<input type="text" name="mail" placeholder="Mail" value="<?php echo $_GET['mail'] ?>" required/>
 				<input type="password" name="passwd1" placeholder="Passwd" required/>
 				<input type="password" name="passwd2" placeholder="Passwd" required/>
 				<input type="submit" value="Submit"/>
@@ -38,7 +39,7 @@ else
 	{
 		// passwd
 		if (passwd_check_regi($_POST['passwd1'], $_POST['passwd2'], $id_user) == 1)
-			regi_ok($_POST['name'], $_POST['passwd1'], $pdo);
+			regi_ok($_POST['name'], $_POST['passwd1'], $_POST['mail'], $pdo);
 	}
 	else
 	{
@@ -78,12 +79,23 @@ function regi_error($param)
 		header('Location: register.php?err=' . $param);
 }
 
-function regi_ok($name, $passwd, $pdo)
+function regi_ok($name, $passwd, $mail, $pdo)
 {
 	$passwd = hash("sha256", $passwd);
-	$query = $pdo->prepare('INSERT INTO users (`name`, `passwd`) VALUES ("' . $name. '", "' . $passwd . '")');
+	$query = $pdo->prepare('INSERT INTO users (`name`, `passwd`, `mail`) VALUES ("' . $name. '", "' . $passwd . '", "' . $mail . '")');
 	$query->execute();
+	
 	// $_SESSION['id'] = $id;
 	// $_SESSION['login'] = $login;
 	header('Location: /index.php');
+}
+
+function send_mail() {
+	$to = $_POST[mail];
+	$from = "noreply@cama.gru";
+	$subject = "Welcome to Camagru";
+	$message = "Hi, " . $name . ". We are very pleased to welcome you to Camagru";
+	if (!(mail($to, $subject, $message))) {
+		echo "Mail failed to send";
+	}
 }

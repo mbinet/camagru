@@ -64,12 +64,13 @@ function save_final_image($image_object, $pdo) {
 	pr($filename);
 	
 	header( "Content-type: image/png" );
-    imagepng($my_img);
-    $save = "../sigs/". strtolower($name) .".png";
-    chmod($save,0755);
-    imagepng($my_img, $save, 0, NULL);
+    imagepng($image_object);
+    $save = "../img/photos/". strtolower($filename) .".png";
+    chmod($save, 0755);
+    // imagepng($my_img, $save, 0, NULL);
     
-	if (imagepng($image_object, '../img/photos/'.$filename.'.png') != TRUE)
+// 	if (imagepng($image_object, '../img/photos/'.$filename.'.png') != TRUE)
+	if (imagepng($image_object, $save, 0, NULL) != TRUE)
 	{
 		echo 'Error while saving new image.';
 	}

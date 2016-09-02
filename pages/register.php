@@ -95,7 +95,9 @@ function send_mail() {
 	$from = "noreply@cama.gru";
 	$subject = "Welcome to Camagru";
 	$message = "Hi, " . $name . ". We are very pleased to welcome you to Camagru";
-	if (!(mail($to, $subject, $message))) {
+	$headers = 'From: noreply@cama.gru' . "\r\n" .
+     'X-Mailer: PHP/' . phpversion();
+	if (!(mail($to, $subject, $message, $headers))) {
 		echo "Mail failed to send";
 	}
 }

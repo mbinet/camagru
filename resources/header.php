@@ -79,3 +79,6 @@ a
 		?>
 	</div>
 </div>
+<div class="footer">
+	&copy; mbinet
+</div>

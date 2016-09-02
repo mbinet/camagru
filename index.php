@@ -15,27 +15,50 @@ if (!$_SESSION['login'])
 <link rel="stylesheet" type="text/css" href="<?php echo getenv('root') ?>/css/login.css">
 
 <div class="wrap">
-  <div>
-    <img src="img/filters/windows.png" class="fdp"></img>
-    <video id="video"></video>
-  </div>
-    <button id="startbutton">Prendre une photo</button>
-    <canvas id="canvas"></canvas>
-    <img src="https://placekitten.com/g/420/315" id="photo" alt="photo">
-    <div class="filtersDiv">
-    	<select name="" id="filterSelector" onchange="filterChange()">
-			<!--<option type="radio" class="filterOption" id="filter5" value="no">#nofilter</option>-->
-			<option type="radio" class="filterOption" id="filter1" value="lotus">lotus</option>
-			<option type="radio" class="filterOption" id="filter2" value="dolphin">dolphin</option>
-			<option type="radio" class="filterOption" id="filter3" value="heart">heart</option>
-			<option type="radio" class="filterOption" id="filter4" value="windows">windows</option>
-			<option type="radio" class="filterOption" id="filter5" value="swag">swag</option>
-		</select>
+	<div>
+		<img src="img/filters/windows.png" class="fdp"></img>
+		<video id="video"></video>
 	</div>
+	<div class="second_panel">
+		<button id="startbutton">Prendre une photo</button>
+		<canvas id="canvas"></canvas>
+		<!--<img src="https://placekitten.com/g/420/315" id="photo" alt="photo">-->
+		<p class="filtersDiv">
+			<select name="" id="filterSelector" onchange="filterChange()">
+				<option type="radio" class="filterOption" id="filter5" value="no">#nofilter</option>
+				<option type="radio" class="filterOption" id="filter1" value="lotus">lotus</option>
+				<option type="radio" class="filterOption" id="filter2" value="dolphin">dolphin</option>
+				<option type="radio" class="filterOption" id="filter3" value="heart">heart</option>
+				<option type="radio" class="filterOption" id="filter4" value="windows">windows</option>
+				<option type="radio" class="filterOption" id="filter5" value="swag">swag</option>
+			</select>
+		</p>
+	</div>
+	
+	<div class="side">
+		<?php
+		$query = $pdo->prepare('SELECT * FROM photos ORDER BY id DESC');
+		$query->execute();
+		$photos = $query->fetchAll();
+		?>
+		<!--<div class="wrap">-->
+		   <?php
+		      foreach ($photos as $data)
+		      {
+		         $img = $data[url];
+		         $id = $data[id];?>
+		      <a href="photo.php/?id=<?php echo $id ?>">
+		         <img class="photo" src="<?php echo $img?>">
+		      </a>
+		   <?php }
+		   ?>
+		<!--</div>-->
+	</div>
+	
 </div>
-<div class="login">
-  COUCOU LES AMIS
-</div>
+<!--<div class="login">-->
+<!--  COUCOU LES AMIS-->
+<!--</div>-->
 
 <script src="<?php echo getenv('root') ?>/js/photo.js" type="text/javascript"></script>
 <script type="text/javascript">

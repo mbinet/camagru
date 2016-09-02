@@ -70,6 +70,18 @@ video
 	margin: 20px auto;
 }
 
+.second_panel {
+	display: inline-block;
+}
+.side {
+	display: inline-block;
+	/*border: 1px solid black;*/
+	width: 400px;
+	height: 800px;
+	position: absolute;
+	overflow: auto;
+}
+
 
 /* PHOTO.PHP */
 
@@ -83,4 +95,13 @@ video
 
 .comment {
 	display: inline-block;
+}
+
+
+/* footer */
+
+.footer {
+	position: absolute;
+	bottom: 10;
+	right: 10;
 }

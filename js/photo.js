@@ -51,7 +51,10 @@
 	canvas.getContext('2d').drawImage(video, 0, 0, width, height); 
 	var data = canvas.toDataURL('image/png');
 	var filter = getFilter();
-	photo.setAttribute('src', data);
+	if (filter == "no") {
+		return (alert("You must select a filter."));
+	}
+	// photo.setAttribute('src', data);
 	
 	
 	var xhr = getXMLHttpRequest();
@@ -65,7 +68,7 @@
 		function callback(res) {
 			console.log(res);
 			console.warn('Sucer un pote, ça n\'a rien d\'homosexuel.')
-			// window.location = "index.php";
+			window.location = "index.php";
 		}
 		
 		xhr.onreadystatechange = function() {
@@ -83,7 +86,6 @@
 	function getFilter() {
 		var e = document.getElementById("filterSelector");
 		var filter = e.options[e.selectedIndex].value;
-		console.log(filter);
 		return filter;
 	}
 	

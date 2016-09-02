@@ -84,14 +84,15 @@ function regi_ok($name, $passwd, $mail, $pdo)
 	$passwd = hash("sha256", $passwd);
 	$query = $pdo->prepare('INSERT INTO users (`name`, `passwd`, `mail`) VALUES ("' . $name. '", "' . $passwd . '", "' . $mail . '")');
 	$query->execute();
+	send_mail($name, $mail);
 	
 	// $_SESSION['id'] = $id;
 	// $_SESSION['login'] = $login;
 	header('Location: /index.php');
 }
 
-function send_mail() {
-	$to = $_POST[mail];
+function send_mail($name, $mail) {
+	$to = $mail;
 	$from = "noreply@cama.gru";
 	$subject = "Welcome to Camagru";
 	$message = "Hi, " . $name . ". We are very pleased to welcome you to Camagru";

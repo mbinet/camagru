@@ -26,6 +26,13 @@ function get_name_from_id_user($id, $pdo) {
 	return ($res[name]);
 }
 
+function get_mail_from_name_user($name, $pdo) {
+	$query = $pdo->prepare("SELECT mail AS mail FROM users WHERE name='" . $name . "'");
+	$query->execute();
+	$res = $query->fetch();
+	return ($res[mail]);
+}
+
 function get_name_from_id_photo($id, $pdo) {
 	$query = $pdo->prepare("SELECT users.name AS name FROM users, photos WHERE photos.id='" . $id . "' AND photos.id_user = users.id");
 	$query->execute();

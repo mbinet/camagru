@@ -61,14 +61,14 @@
 	console.warn(xhr);
 	var sVar1 = encodeURIComponent(data);
 	
-	xhr.open("POST", "actions/data.php", true); // (sMethod, sUrl, bAsync)
+	xhr.open("POST", "/actions/data.php", true); // (sMethod, sUrl, bAsync)
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.send("raw=" + sVar1 + "&filter=" + filter);
 	
 		function callback(res) {
 			console.log(res);
 			console.warn('Sucer un pote, ça n\'a rien d\'homosexuel.')
-			window.location = "index.php";
+			// window.location = "index.php";
 		}
 		
 		xhr.onreadystatechange = function() {

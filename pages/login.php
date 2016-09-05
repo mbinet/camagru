@@ -13,13 +13,15 @@ if (!isset($_POST['name']))
 	<div class="login_wrap">
 		<div class="login">
 			<?php
-			if ($_GET['name'])
-				echo "Wrong password";
+			if ($_GET['name']) {
+				echo "<div id='wrong_password'>Wrong password </br>";
+				echo "Do you wish to <a href='/actions/recover.php?name=" . $_GET['name'] . "' id='recover_button'>recover</a> it ?</div>";
+			}
 			if ($_GET['err'])
 				echo "This login doesn't exist. You may want to <a href='register.php'>register</a>";
 			?>
 			<form action="login.php" method="post" >
-				<input type="text" name="name" placeholder="Name" value="<?php echo $_GET['name'] ?>" required autofocus/>
+				<input type="text" name="name" id="name" placeholder="Name" value="<?php echo $_GET['name'] ?>" required autofocus/>
 				<input type="password" name="passwd" placeholder="Passwd" required/>
 				<input type="submit" value="Submit"/>
 			</form>
@@ -76,3 +78,10 @@ function connec_ok($id, $login)
 	$_SESSION['login'] = $login;
 	header('Location: /index.php');
 }
+
+?>
+
+
+
+<!--<script src="<?php //echo getenv('root') ?>/js/oXHR.js" type="text/javascript"></script>-->
+<!--<script type="text/javascript" src="/js/recover.js"></script>-->

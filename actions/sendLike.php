@@ -18,7 +18,6 @@ else {
     $query = $pdo->prepare('INSERT INTO `likes` VALUES (' . $id_user . ', ' . $id_photo . ')');
     $query->execute();
 }
-
 header('Location: /pages/photo.php/?id=' . $id_photo);
 
 ?>

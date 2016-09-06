@@ -68,7 +68,7 @@
 		function callback(res) {
 			console.log(res);
 			console.warn('Sucer un pote, ça n\'a rien d\'homosexuel.')
-			// window.location = "index.php";
+			window.location = "index.php";
 		}
 		
 		xhr.onreadystatechange = function() {

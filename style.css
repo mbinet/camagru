@@ -56,14 +56,21 @@ video
 	-webkit-transform: scaleX(-1);
 	transform: scaleX(-1);
 }
+fieldset {
+	text-align: center;
+	margin-top: 10px;
+}
 #startbutton {
 	background: #FF530D;
 	border: none;
 	color: #2B3A42;
-	margin: 100px 20px 20px 20px;
+	/*margin: 100px 20px 20px 20px;*/
 	padding: 10px 20px;
 	font-size: 20px;
+	margin-left: auto;
+	margin-right: auto;
 }
+
 #container {
 	overflow: hidden;
 	width: 880px;
@@ -72,12 +79,14 @@ video
 
 .second_panel {
 	display: inline-block;
+	margin-left: 100px;
 }
 .side {
 	display: inline-block;
 	/*border: 1px solid black;*/
 	width: 400px;
 	height: 800px;
+	margin-left: 100px;
 	position: absolute;
 	overflow: auto;
 }

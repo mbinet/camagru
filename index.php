@@ -20,19 +20,37 @@ if (!$_SESSION['login'])
 		<video id="video"></video>
 	</div>
 	<div class="second_panel">
-		<button id="startbutton">Prendre une photo</button>
 		<canvas id="canvas"></canvas>
 		<!--<img src="https://placekitten.com/g/420/315" id="photo" alt="photo">-->
-		<p class="filtersDiv">
-			<select name="" id="filterSelector" onchange="filterChange()">
-				<option type="radio" class="filterOption" id="filter5" value="no">#nofilter</option>
-				<option type="radio" class="filterOption" id="filter1" value="lotus">lotus</option>
-				<option type="radio" class="filterOption" id="filter2" value="dolphin">dolphin</option>
-				<option type="radio" class="filterOption" id="filter3" value="heart">heart</option>
-				<option type="radio" class="filterOption" id="filter4" value="windows">windows</option>
-				<option type="radio" class="filterOption" id="filter5" value="swag">swag</option>
-			</select>
-		</p>
+		<form action="/actions/upload_image.php" method="post" enctype="multipart/form-data">
+			
+			<fieldset><legend>Pick a filter</legend>
+				<p class="filtersDiv">
+					<select name="filterSelector" id="filterSelector" onchange="filterChange()">
+						<option type="radio" class="filterOption" id="filter5" value="no">#nofilter</option>
+						<option type="radio" class="filterOption" id="filter1" value="lotus">lotus</option>
+						<option type="radio" class="filterOption" id="filter2" value="dolphin">dolphin</option>
+						<option type="radio" class="filterOption" id="filter3" value="heart">heart</option>
+						<option type="radio" class="filterOption" id="filter4" value="windows">windows</option>
+						<option type="radio" class="filterOption" id="filter5" value="swag">swag</option>
+					</select>
+				</p>
+			</fieldset>
+			
+			<fieldset><legend>Upload image</legend>
+				<p>
+					<input type="file" name="fileToUpload" id="fileToUpload" accept="image/gif, image/jpeg, image/png" required>
+					</br>
+					<input type="submit" value="Use this image" name="submit">
+		</form>
+				</p>
+			</fieldset>
+			
+			<fieldset><legend>Or</legend>
+				<p>
+					<button id="startbutton">Take a picture</button>
+				</p>
+			</fieldset>
 	</div>
 	
 	<div class="side">
@@ -47,7 +65,7 @@ if (!$_SESSION['login'])
 		      {
 		         $img = $data[url];
 		         $id = $data[id];?>
-		      <a href="photo.php/?id=<?php echo $id ?>">
+		      <a href="pages/photo.php/?id=<?php echo $id ?>">
 		         <img class="photo" src="<?php echo $img?>">
 		      </a>
 		   <?php }
@@ -61,6 +79,7 @@ if (!$_SESSION['login'])
 <!--</div>-->
 
 <script src="<?php echo getenv('root') ?>/js/photo.js" type="text/javascript"></script>
+<!--<script src="<?php //echo getenv('root') ?>/js/photo_upload.js" type="text/javascript"></script>-->
 <script type="text/javascript">
 	
 	

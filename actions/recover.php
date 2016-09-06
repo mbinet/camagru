@@ -12,6 +12,7 @@ $mail = get_mail_from_name_user($name, $pdo);
 $query = $pdo->prepare("UPDATE users SET passwd = '" . $new_pass_db . "' WHERE name= '" . $name . "'");
 $query->execute();
 send_mail_pass($name, $mail, $new_pass);
+echo $new_pass;
 echo "We've sent you a new passord, check your emails.";
 
 function randomPassword() {

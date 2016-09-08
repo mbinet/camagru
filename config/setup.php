@@ -46,5 +46,5 @@ CREATE TABLE IF NOT EXISTS `users` (
   `entry_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;";
-pr($query);
+// pr($query);
 $query->execute;

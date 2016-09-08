@@ -28,7 +28,7 @@
 		video.play();
 	},
 	function(err) {
-		console.log("An error occured! " + err);
+		// console.log("An error occured! " + err);
 	}
 	);
 	
@@ -58,7 +58,7 @@
 	
 	
 	var xhr = getXMLHttpRequest();
-	console.warn(xhr);
+	// console.warn(xhr);
 	var sVar1 = encodeURIComponent(data);
 	
 	xhr.open("POST", "/actions/data.php", true); // (sMethod, sUrl, bAsync)
@@ -66,8 +66,7 @@
 	xhr.send("raw=" + sVar1 + "&filter=" + filter);
 	
 		function callback(res) {
-			console.log(res);
-			console.warn('Sucer un pote, ça n\'a rien d\'homosexuel.')
+			// console.log(res);
 			window.location = "index.php";
 		}
 		

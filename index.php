@@ -86,6 +86,6 @@ if (!$_SESSION['login'])
 	function filterChange() {
 		var e = document.getElementById("filterSelector");
 		var filter = e.options[e.selectedIndex].value;
-		console.log(filter);
+		// console.log(filter);
 	}
 </script>

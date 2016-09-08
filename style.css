@@ -81,15 +81,32 @@ fieldset {
 	display: inline-block;
 	margin-left: 100px;
 }
+
+/*@media all and (max-width: 640px)*/
+/*{*/
+/*	.side {*/
+/*		display: inline-block;*/
+/*	}*/
+/*}*/
+
+@media all and (min-width: 1800px)
+{
+	.side {
+		display: inline-block;
+		margin-left: 100px;
+	}
+}
+
 .side {
-	display: inline-block;
+	/*display: block;*/
 	/*border: 1px solid black;*/
+	margin-top: 30px;
 	width: 400px;
 	height: 800px;
-	margin-left: 100px;
 	position: absolute;
 	overflow: auto;
 }
+
 
 
 /* PHOTO.PHP */

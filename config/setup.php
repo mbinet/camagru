@@ -1,5 +1,16 @@
 <?php
-include('../resources/head.php');
+    $DB_DSN = 'mysql:host=' . getenv('IP') . '';
+    $DB_USER = 'mbinet';
+    $DB_PASSWORD = 'mbinet';
+    
+    
+    try { 
+        $pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch(PDOException $e) {
+        echo $e->getMessage();
+    }
+
 
 $query = "
 CREATE DATABASE IF NOT EXISTS `camagru` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
